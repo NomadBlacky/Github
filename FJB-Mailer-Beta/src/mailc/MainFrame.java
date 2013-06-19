@@ -20,7 +20,10 @@ import java.awt.BorderLayout;
 public class MainFrame extends JFrame {
 	
 	public MainFrame() {
-		setTitle("FJB Mailer (Sample)");
+		
+		setSize(new Dimension(800, 600));
+		setLocationRelativeTo(null);
+		setTitle("FJB Mailer - Beta");
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		ImageIcon icon = new ImageIcon("data/mail_.png");
@@ -91,25 +94,32 @@ public class MainFrame extends JFrame {
 		
 		JPanel panelSend = new JPanel();
 		tabbedPane.addTab("メール送信", null, panelSend, null);
-		panelSend.setLayout(new MigLayout("", "[50,right][grow]", "[][][][][grow]"));
+		panelSend.setLayout(new MigLayout("", "15[50,right][grow]15", "15[][][][][grow][]15"));
 		
 		panelSend.add(new JLabel("To:"), "");
-		panelSend.add(new JTextField(), "wrap,grow");
+		panelSend.add(new JTextField(), "wrap 15,grow");
 		panelSend.add(new JLabel("Cc:"), "");
-		panelSend.add(new JTextField(), "wrap,grow");
+		panelSend.add(new JTextField(), "wrap 15,grow");
 		panelSend.add(new JLabel("Bcc:"), "");
-		panelSend.add(new JTextField(), "wrap,grow");
+		panelSend.add(new JTextField(), "wrap 15,grow");
 		panelSend.add(new JLabel("Subject:"), "");
-		panelSend.add(new JTextField(), "wrap,grow");
-		panelSend.add(new JTextPane(), "h 100::, w 200::, span, c");
+		panelSend.add(new JTextField(), "wrap 15,grow");
+		panelSend.add(new JTextPane(), "grow,span,wrap 10");
+		
+//		JPanel buttons = new JPanel(new MigLayout());
+//		panelSend.add(buttons, "span, r");
+		
+		panelSend.add(new JButton("送信"), "w 150, split 2");
+		panelSend.add(new JButton("下書きに保存"), "w 150");
+		
+		TabHoge tabHoge = new TabHoge();
+		tabbedPane.addTab("hoge", null, tabHoge, null);
 		
 	}
 
 	public static void main(String[] args) {
 		
 		MainFrame frame = new MainFrame();
-		frame.setSize(new Dimension(800, 600));
-		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 }
