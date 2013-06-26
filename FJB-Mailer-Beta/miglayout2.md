@@ -1,13 +1,11 @@
-package mailc;
+<br>
+<h3>セルのサイズを調整する</h3>
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+<br>
+コンポーネントのサイズ調整はできました。<br>
+今度はコンポーネントを乗せるセル自体のサイズを調整します。<br>
 
-import net.miginfocom.swing.MigLayout;
-
-public class TestFrame extends JFrame {
-
+```java
 
 	public TestFrame() {
 
@@ -40,13 +38,16 @@ public class TestFrame extends JFrame {
 		this.add(panel);
 	}
 
+```
 
-	public static void main(String[] args) {
+表示例
+<img src="" alt="">
 
-		TestFrame testFrame = new TestFrame();
-
-		// 画面の中央に表示させる
-		testFrame.setLocationRelativeTo(null);
-		testFrame.setVisible(true);
-	}
-}
+<br>
+コンストラクタにもある、
+<ul>
+  <li>layoutConstraints</li>
+  <li>colConstraints</li>
+  <li>rowConstraints</li>
+</ul>
+これらを書き換えることで、レイアウトの調整ができます。<br>
