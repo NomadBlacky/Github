@@ -24,17 +24,17 @@ public class TestFrame extends JFrame {
 		panel.setLayout(layout);
 
 		// パネルにコンポーネントを追加していく
-		panel.add(new JButton("1A"), "");
-		panel.add(new JButton("1B"), "");
-		panel.add(new JButton("1C"), "");
+		panel.add(new JButton("1A"), "top, left");
+		panel.add(new JButton("1B"), "t, center");
+		panel.add(new JButton("1C"), "t, right");
 
-		panel.add(new JButton("2A"), "");
-		panel.add(new JButton("2B"), "");
-		panel.add(new JButton("2C"), "");
+		panel.add(new JButton("2A"), "l");
+		panel.add(new JButton("2B"), "c");
+		panel.add(new JButton("2C"), "r");
 
-		panel.add(new JButton("3A"), "");
-		panel.add(new JButton("3A"), "");
-		panel.add(new JButton("3A"), "");
+		panel.add(new JButton("3A"), "bottom, left");
+		panel.add(new JButton("3A"), "b, c");
+		panel.add(new JButton("3A"), "b, r");
 
 		// 自身(TestFrame)にパネルを追加する
 		this.add(panel);
