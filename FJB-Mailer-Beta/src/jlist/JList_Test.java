@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -24,7 +25,7 @@ public class JList_Test extends JFrame {
 		setTitle("JList_Test");
 		setSize(800,600);
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(new MigLayout("", "[200][grow]", "[grow]"));
+		getContentPane().setLayout(new MigLayout("", "[200,c][grow]", "[grow]"));
 		
 		JScrollPane scrollPane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		DefaultListModel<MailObject> model = new DefaultListModel<>();
@@ -46,10 +47,16 @@ public class JList_Test extends JFrame {
 		
 		scrollPane.setViewportView(jList);
 
+		getContentPane().add(new JButton("新規作成"),"");
+		getContentPane().add(new JButton("ゴミ箱"),"");
+		getContentPane().add(new JButton("未送信"),"");
+		getContentPane().add(new JButton("アドレス帳"),"");
+		getContentPane().add(new JButton("設定"),"");
+		getContentPane().add(new JButton("フォルダ作成"),"wrap");
 		getContentPane().add(scrollPane, "grow");
 
 		textPane = new JTextPane();
-		getContentPane().add(textPane, "grow");
+		getContentPane().add(textPane, "span,grow");
 
 		setVisible(true);
 
