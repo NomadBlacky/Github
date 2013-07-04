@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.ListCellRenderer;
@@ -19,6 +20,8 @@ class TextAreaRenderer extends JTextArea implements ListCellRenderer {
 	@Override
 	public Component getListCellRendererComponent(JList list, Object object,
 			int index, boolean isSelected, boolean cellHasFocus) {
+		
+		add(new JButton(""));
 		// setLineWrap(true);
 		if (focusBorder == null) {
 			focusBorder = new DotBorder(new Color(~list

@@ -2,18 +2,27 @@ package jlist;
 
 import java.util.Date;
 
+enum Status {
+	RECEIVE,
+	SENT,
+	NOT_SEND,
+	OTHER,
+}
+
 public class MailObject {
 
 	private String from;
 	private String subject;
 	private Date date;
 	private String text;
+	Status status;
 
 	public MailObject() {
 		this.from = "from";
 		this.subject = "subject";
 		this.date = new Date();
 		this.text = "text";
+		this.status = Status.OTHER;
 	}
 	
 	public MailObject(String from, String subject, Date date, String text) {
@@ -21,6 +30,15 @@ public class MailObject {
 		this.subject = subject;
 		this.date = date;
 		this.text = text;
+		this.status = status.OTHER;
+	}
+	
+	public MailObject(String from, String subject, Date date, String text, Status status) {
+		this.from = from;
+		this.subject = subject;
+		this.date = date;
+		this.text = text;
+		this.status = status;
 	}
 	
 	public String getListViewText() {

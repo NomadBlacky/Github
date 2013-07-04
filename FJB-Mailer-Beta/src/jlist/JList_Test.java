@@ -1,5 +1,6 @@
 package jlist;
 
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
@@ -25,7 +27,7 @@ public class JList_Test extends JFrame {
 		setTitle("JList_Test");
 		setSize(800,600);
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(new MigLayout("", "[200,c][grow]", "[grow]"));
+		getContentPane().setLayout(new MigLayout("", "[][grow]", "[100][grow]"));
 		
 		JScrollPane scrollPane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		DefaultListModel<MailObject> model = new DefaultListModel<>();
@@ -35,6 +37,8 @@ public class JList_Test extends JFrame {
 		mailList.add(new MailObject("moge@ppp.co.jp", "もげぇ", new Date(), "本文\nなのです"));
 		mailList.add(new MailObject("poge@feaw.ne.jp", "ぽげぇ", new Date(), "本文\nである"));
 		mailList.add(new MailObject("fage@geaw.ac.jp", "ふぁげぇ", new Date(), "本文\n\n\nかもしれない"));
+		mailList.add(new MailObject("piyo@pipipi.com", "ぴよ", new Date(), "本文だった", Status.RECEIVE));
+		mailList.add(new MailObject("moge@mogeru.com", "もげ", new Date(), "本\n文\nの\nよ\nう\nな\nも\nの\n", Status.SENT));
 		mailList.add(new MailObject());
 		
 		for(MailObject mail : mailList) {
@@ -42,17 +46,14 @@ public class JList_Test extends JFrame {
 		}
 
 		JList<MailObject> jList = new JList<>(model);
-		jList.setCellRenderer(new TextAreaRenderer());
+		jList.setCellRenderer(new TextImageRenderer());
 		jList.addMouseListener(new ListClickAction());
 		
 		scrollPane.setViewportView(jList);
-
-		getContentPane().add(new JButton("新規作成"),"");
-		getContentPane().add(new JButton("ゴミ箱"),"");
-		getContentPane().add(new JButton("未送信"),"");
-		getContentPane().add(new JButton("アドレス帳"),"");
-		getContentPane().add(new JButton("設定"),"");
-		getContentPane().add(new JButton("フォルダ作成"),"wrap");
+		
+		JPanel menuPanel = new MenuPanel();
+		getContentPane().add(menuPanel, "span, center, wrap");
+	
 		getContentPane().add(scrollPane, "grow");
 
 		textPane = new JTextPane();
@@ -62,18 +63,8 @@ public class JList_Test extends JFrame {
 
 	}
 	
-	class ListClickAction implements MouseListener {
+	class ListClickAction extends MouseAdapter {
 
-		@Override
-		public void mouseClicked(MouseEvent e) {}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {}
-
-		@Override
-		public void mouseExited(MouseEvent e) {}
-
-		
 		@Override
 		public void mousePressed(MouseEvent e) {
 
@@ -85,11 +76,6 @@ public class JList_Test extends JFrame {
 			
 			textPane.setText(list.getSelectedValue().getText());
 		}
-
-		
-		@Override
-		public void mouseReleased(MouseEvent e) {}
-		
 	}
 	
 	public static void main(String[] args) {
