@@ -30,8 +30,8 @@ public class JList_Test extends JFrame {
 		getContentPane().setLayout(new MigLayout("", "[][grow]", "[100][grow]"));
 		
 		JScrollPane scrollPane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
 		DefaultListModel<MailObject> model = new DefaultListModel<>();
-		
 		ArrayList<MailObject> mailList = new ArrayList<>();
 		mailList.add(new MailObject("hoge@foo.com", "ほげぇ", new Date(), "本文だよん"));
 		mailList.add(new MailObject("moge@ppp.co.jp", "もげぇ", new Date(), "本文\nなのです"));
